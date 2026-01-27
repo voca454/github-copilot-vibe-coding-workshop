@@ -1,0 +1,3 @@
+- Always provide high-performance code solutions.
+- Focus on logic and security, no conversational fillers.
+- Deeply analyze project structure before suggesting edits.
