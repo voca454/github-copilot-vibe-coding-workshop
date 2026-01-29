@@ -441,3 +441,9 @@ mtj.tmp/
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+# Workshop Specific
+python/sns_api.db
+python/.venv/
+javascript/node_modules/
+javascript/dist/

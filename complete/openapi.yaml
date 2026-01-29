@@ -23,17 +23,17 @@ paths:
       tags:
         - Posts
       responses:
-        '200':
+        "200":
           description: Successfully retrieved posts
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Post'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-    
+                  $ref: "#/components/schemas/Post"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+
     post:
       summary: Create a new post
       description: Create a new post to share something with others
@@ -45,18 +45,18 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/NewPostRequest'
+              $ref: "#/components/schemas/NewPostRequest"
       responses:
-        '201':
+        "201":
           description: Post created successfully
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Post'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+                $ref: "#/components/schemas/Post"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
 
   /posts/{postId}:
     get:
@@ -66,19 +66,19 @@ paths:
       tags:
         - Posts
       parameters:
-        - $ref: '#/components/parameters/PostIdPath'
+        - $ref: "#/components/parameters/PostIdPath"
       responses:
-        '200':
+        "200":
           description: Successfully retrieved the post
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Post'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-    
+                $ref: "#/components/schemas/Post"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+
     patch:
       summary: Update a post
       description: Update an existing post if you made a mistake or have something to add
@@ -86,27 +86,27 @@ paths:
       tags:
         - Posts
       parameters:
-        - $ref: '#/components/parameters/PostIdPath'
+        - $ref: "#/components/parameters/PostIdPath"
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdatePostRequest'
+              $ref: "#/components/schemas/UpdatePostRequest"
       responses:
-        '200':
+        "200":
           description: Post updated successfully
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Post'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-    
+                $ref: "#/components/schemas/Post"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+
     delete:
       summary: Delete a post
       description: Delete a post if you no longer want it shared
@@ -114,14 +114,14 @@ paths:
       tags:
         - Posts
       parameters:
-        - $ref: '#/components/parameters/PostIdPath'
+        - $ref: "#/components/parameters/PostIdPath"
       responses:
-        '204':
+        "204":
           description: Post deleted successfully
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
 
   /posts/{postId}/comments:
     get:
@@ -131,21 +131,21 @@ paths:
       tags:
         - Comments
       parameters:
-        - $ref: '#/components/parameters/PostIdPath'
+        - $ref: "#/components/parameters/PostIdPath"
       responses:
-        '200':
+        "200":
           description: Successfully retrieved comments
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Comment'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-    
+                  $ref: "#/components/schemas/Comment"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+
     post:
       summary: Create a comment
       description: Add a comment to a post to share your thoughts
@@ -153,26 +153,26 @@ paths:
       tags:
         - Comments
       parameters:
-        - $ref: '#/components/parameters/PostIdPath'
+        - $ref: "#/components/parameters/PostIdPath"
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/NewCommentRequest'
+              $ref: "#/components/schemas/NewCommentRequest"
       responses:
-        '201':
+        "201":
           description: Comment created successfully
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Comment'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+                $ref: "#/components/schemas/Comment"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
 
   /posts/{postId}/comments/{commentId}:
     get:
@@ -182,20 +182,20 @@ paths:
       tags:
         - Comments
       parameters:
-        - $ref: '#/components/parameters/PostIdPath'
-        - $ref: '#/components/parameters/CommentIdPath'
+        - $ref: "#/components/parameters/PostIdPath"
+        - $ref: "#/components/parameters/CommentIdPath"
       responses:
-        '200':
+        "200":
           description: Successfully retrieved the comment
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Comment'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-    
+                $ref: "#/components/schemas/Comment"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+
     patch:
       summary: Update a comment
       description: Update an existing comment to correct or revise it
@@ -203,28 +203,28 @@ paths:
       tags:
         - Comments
       parameters:
-        - $ref: '#/components/parameters/PostIdPath'
-        - $ref: '#/components/parameters/CommentIdPath'
+        - $ref: "#/components/parameters/PostIdPath"
+        - $ref: "#/components/parameters/CommentIdPath"
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateCommentRequest'
+              $ref: "#/components/schemas/UpdateCommentRequest"
       responses:
-        '200':
+        "200":
           description: Comment updated successfully
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Comment'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-    
+                $ref: "#/components/schemas/Comment"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+
     delete:
       summary: Delete a comment
       description: Delete a comment if necessary
@@ -232,15 +232,15 @@ paths:
       tags:
         - Comments
       parameters:
-        - $ref: '#/components/parameters/PostIdPath'
-        - $ref: '#/components/parameters/CommentIdPath'
+        - $ref: "#/components/parameters/PostIdPath"
+        - $ref: "#/components/parameters/CommentIdPath"
       responses:
-        '204':
+        "204":
           description: Comment deleted successfully
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
 
   /posts/{postId}/likes:
     post:
@@ -250,27 +250,27 @@ paths:
       tags:
         - Likes
       parameters:
-        - $ref: '#/components/parameters/PostIdPath'
+        - $ref: "#/components/parameters/PostIdPath"
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/LikeRequest'
+              $ref: "#/components/schemas/LikeRequest"
       responses:
-        '201':
+        "201":
           description: Post liked successfully
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/LikeResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-    
+                $ref: "#/components/schemas/LikeResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
+
     delete:
       summary: Unlike a post
       description: Remove your like from a post if you change your mind
@@ -278,14 +278,14 @@ paths:
       tags:
         - Likes
       parameters:
-        - $ref: '#/components/parameters/PostIdPath'
+        - $ref: "#/components/parameters/PostIdPath"
       responses:
-        '204':
+        "204":
           description: Like removed successfully
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
+        "404":
+          $ref: "#/components/responses/NotFound"
+        "500":
+          $ref: "#/components/responses/InternalServerError"
 
 components:
   parameters:
@@ -298,7 +298,7 @@ components:
         type: string
         format: uuid
         example: "123e4567-e89b-12d3-a456-426614174000"
-    
+
     CommentIdPath:
       name: commentId
       in: path
@@ -539,7 +539,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: "#/components/schemas/Error"
           example:
             error: "VALIDATION_ERROR"
             message: "The request body is invalid"
@@ -550,7 +550,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: "#/components/schemas/Error"
           example:
             error: "NOT_FOUND"
             message: "The requested resource was not found"
@@ -560,7 +560,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: "#/components/schemas/Error"
           example:
             error: "INTERNAL_ERROR"
             message: "An unexpected error occurred"

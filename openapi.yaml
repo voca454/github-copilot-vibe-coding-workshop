@@ -1,0 +1,130 @@
+openapi: 3.0.1
+info:
+  title: Contoso Product API
+  description: API quản lý sản phẩm cho ứng dụng mạng xã hội Contoso.
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8000
+
+tags:
+  - name: Products
+    description: Quản lý danh mục sản phẩm của Contoso
+  - name: Posts
+    description: Các hoạt động liên quan đến bài viết
+  - name: Comments
+    description: Quản lý bình luận
+  - name: Likes
+    description: Hệ thống tương tác lượt thích
+
+paths:
+  /products:
+    get:
+      tags:
+        - Products
+      summary: Lấy danh sách sản phẩm
+      responses:
+        "200":
+          description: Thành công
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+    post:
+      tags:
+        - Products
+      summary: Tạo sản phẩm mới
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/NewProductRequest"
+      responses:
+        "201":
+          description: Đã tạo thành công
+        "400":
+          $ref: "#/components/responses/BadRequest"
+
+  /products/{productId}:
+    get:
+      tags:
+        - Products
+      summary: Lấy chi tiết một sản phẩm
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Thành công
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+components:
+  parameters:
+    PostIdPath:
+      name: postId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    CommentIdPath:
+      name: commentId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+
+  schemas:
+    Product:
+      type: object
+      required: [id, name, price, createdAt]
+      properties:
+        id: { type: string }
+        name: { type: string }
+        description: { type: string }
+        price: { type: number, format: float }
+        createdAt: { type: string, format: date-time }
+
+    NewProductRequest:
+      type: object
+      required: [name, price]
+      properties:
+        name: { type: string }
+        description: { type: string }
+        price: { type: number, format: float }
+
+    Error:
+      type: object
+      required: [error, message]
+      properties:
+        error: { type: string }
+        message: { type: string }
+        details: { type: array, items: { type: string } }
+
+  responses:
+    BadRequest:
+      description: Lỗi yêu cầu không hợp lệ
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    NotFound:
+      description: Không tìm thấy tài nguyên
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    InternalServerError:
+      description: Lỗi máy chủ nội bộ
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"

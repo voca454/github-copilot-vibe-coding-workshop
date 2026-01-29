@@ -1,4 +1,9 @@
 {
   "chat.tools.autoApprove": true,
-  "chat.agent.maxRequests": 100
+  "chat.agent.maxRequests": 100,
+  "chat.mcp.serverSampling": {
+    "github-copilot-vibe-coding-workshop/.vscode/mcp.json: Framelink Figma MCP": {
+      "allowedModels": ["copilot/auto"]
+    }
+  }
 }
